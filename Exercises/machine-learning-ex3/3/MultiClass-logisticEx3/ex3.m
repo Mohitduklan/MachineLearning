@@ -1,3 +1,4 @@
+
 clear ; close all; clc
 input_layer_size  = 400;  % 20x20 Input Images of Digits
 num_labels = 10;          % 10 labels, from 1 to 10

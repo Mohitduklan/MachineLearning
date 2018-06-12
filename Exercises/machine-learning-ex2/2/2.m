@@ -1,10 +1,10 @@
 clear;clc;
-data=load('data2.txt');
+data=load('data3.txt');
 m=length(data);
 n=columns(data);
 x_orig=data(:,1:n-1);
 y=data(:,n);
-x=[ones(m,1),x_orig];
+x=[ones(m,1),x_orig,x_orig(:,1).^2,x_orig(:,2).^2];
 no_theta=columns(x);
 theta_i=zeros(no_theta,1);
 theta_f=zeros(no_theta,1);
@@ -18,7 +18,6 @@ function [J, grad] = costFunction(theta_f, X, y)
 end
 options = optimset('GradObj', 'on', 'MaxIter', 400);
 [theta_f, J] = fminunc(@(theta_f)(costFunction(theta_f, x, y)), theta_f, options);
-plotDecisionBoundary(theta_f,x,y);
 
  
  
@@ -34,7 +33,7 @@ for i=0:150000
       printf("cost=%f\n",cost);
     end
 end
-plotDecisionBoundary(theta_i,x,y);
+
 predictionsOfFun =round( 1./(1+exp(-x*theta_f)));
 predictionsOfItr =round( 1./(1+exp(-x*theta_i)));
 accuracyOfFun=mean((predictionsOfFun==y)*100); 
