@@ -15,6 +15,9 @@ load('ex3weights.mat');   % weights are already given for this problem
                           
 pred = predict(Theta1, Theta2, X);
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
+VectorImage=Image2Matrix("img.jpg");
+pred = predict(Theta1,Theta2,VectorImage);
+#{
 rp = randperm(m);
 for i = 1:m
     displayData(X(rp(i), :));
@@ -25,4 +28,4 @@ for i = 1:m
       break
     end
 end
-
+#}

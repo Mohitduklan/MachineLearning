@@ -1,5 +1,5 @@
 clear;clc;
-data=load('data2.txt');
+data=load('data3.txt');
 m=length(data);
 n=columns(data);
 x_orig=data(:,1:n-1);
