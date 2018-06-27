@@ -84,11 +84,8 @@ d3= h-y_new;
 
 d2=d3*Theta2.*sigmoidGradient([ones(m,1) z2]);
 
-D1+=(d2(:,2:end)'*a1);
-D2+=d3'*a2;
-
-Theta1_grad = D1 / m;
-Theta2_grad = D2 / m;
+Theta1_grad = (d2(:,2:end)'*a1) / m;
+Theta2_grad = d3'*a2 / m;
 
 Theta1_grad(:, 2:end) += ((lambda/m) * Theta1(:, 2:end));
 

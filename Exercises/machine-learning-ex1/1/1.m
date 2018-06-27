@@ -3,7 +3,7 @@ data=load('data1.txt');
 m=length(data);
 n=columns(data)-1;
 x=[ones(m,1),data(:,1:n)];
-x=[x, x(:,2).^2,x(:,2).^3]; #more features
+x=[x, x(:,2).^2]; #more features
 noOfTheta=columns(x);
 y=data(:,n+1);
 theta=zeros(noOfTheta,1);
@@ -11,10 +11,10 @@ alpha=0.001;
 lambda=0.1;
 
 #gradient descent and iteration
-for i=1:15000
+for i=1:50000
   h=x*theta;
   J=1/m*sum((h-y).^2);
-  if mod(i,1000)==0
+  if mod(i,10000)==0
   printf("cost=%f \n",J);
   end
   theta-=alpha*(1/m)*(x'*(h-y));    #overfitted

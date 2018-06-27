@@ -9,8 +9,8 @@ load('ex4weights.mat');
 nn_params = [Theta1(:) ; Theta2(:)];
 lambda = 1;
 J = nnCostFunction(nn_params, input_layer_size, hidden_layer_size,num_labels, X, y, lambda);
-initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
-initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
+initial_Theta1 = zeros(hidden_layer_size, input_layer_size+1);
+initial_Theta2 = zeros(num_labels, hidden_layer_size+1);
 initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 options = optimset('MaxIter', 50);
 lambda = 1;
@@ -22,5 +22,3 @@ Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):en
                  num_labels, (hidden_layer_size + 1));
 pred = predict(Theta1, Theta2, X);
 printf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
-
-
