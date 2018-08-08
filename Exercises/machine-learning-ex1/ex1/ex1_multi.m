@@ -34,7 +34,7 @@ clear ; close all; clc
 fprintf('Loading data ...\n');
 
 %% Load Data
-data=load('/root/Documents/Octave/ML/Exercises/machine-learning-ex1/ex1/ex1data2.txt');
+data=load('ex1data2.txt');
 X = data(:, 1:2);
 y = data(:, 3);
 m = length(y);
@@ -152,7 +152,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = [1,1494,3]*theta; % You should change this
+price = [1,1650,3]*theta; % You should change this
 
 
 % ============================================================
